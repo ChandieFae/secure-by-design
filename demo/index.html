@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Try Microsoft Edge for Business - Secure by Design Demo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    .mode-toggle {
+      display: flex;
+      justify-content: center;
+      margin: 1rem;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffcc00;
+      color: #003366;
+    }
+    .browser-window {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .tab-bar {
+      background: #e0e0e0;
+      padding: 0.75rem;
+      font-weight: bold;
+    }
+    .content {
+      padding: 2rem;
+    }
+    .link-btn {
+      display: inline-block;
+      margin: 0.5rem 0.5rem 0 0;
+      padding: 0.6rem 1rem;
+      background-color: #e6f0ff;
+      border: 1px solid #003366;
+      color: #003366;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔐 Try Microsoft Edge for Business</h1>
+    <p>A Secure by Design interactive simulation</p>
+  </header>
+
+  <div class="mode-toggle">
+    <button onclick="toggleMode()">🔁 Switch Profile</button>
+  </div>
+
+  <div class="browser-window" id="browser">
+    <div class="tab-bar" id="tabBar">🟦 T&C Work Profile</div>
+    <div class="content" id="contentArea">
+      <h2>Welcome to Work Mode</h2>
+      <p><strong>The power to schedule is in your hands.</strong></p>
+      <p>This browser window is branded, secure, and separated from personal browsing.</p>
+      <a class="link-btn" onclick="openLink('outlook')">📧 Open Outlook</a>
+      <a class="link-btn" onclick="openLink('youtube')">▶️ Open YouTube</a>
+    </div>
+  </div>
+
+  <script>
+    let isWorkMode = true;
+
+    function toggleMode() {
+      isWorkMode = !isWorkMode;
+      renderMode();
+    }
+
+    function openLink(site) {
+      if (site === 'outlook') {
+        if (!isWorkMode) toggleMode();
+        alert('Auto-switched to Work Profile for Outlook.');
+      } else if (site === 'youtube') {
+        if (isWorkMode) toggleMode();
+        alert('Auto-switched to Personal Profile for YouTube.');
+      }
+    }
+
+    function renderMode() {
+      const tabBar = document.getElementById('tabBar');
+      const content = document.getElementById('contentArea');
+
+      if (isWorkMode) {
+        tabBar.textContent = '🟦 T&C Work Profile';
+        content.innerHTML = `
+          <h2>Welcome to Work Mode</h2>
+          <p><strong>The power to schedule is in your hands.</strong></p>
+          <p>This browser window is branded, secure, and separated from personal browsing.</p>
+          <a class="link-btn" onclick="openLink('outlook')">📧 Open Outlook</a>
+          <a class="link-btn" onclick="openLink('youtube')">▶️ Open YouTube</a>
+        `;
+      } else {
+        tabBar.textContent = '🟩 Personal Profile';
+        content.innerHTML = `
+          <h2>Welcome to Personal Mode</h2>
+          <p>You're now in your personal browsing space — no work tabs here.</p>
+          <p>Smart switching keeps everything separated, so you never mix up your worlds.</p>
+          <a class="link-btn" onclick="openLink('outlook')">📧 Open Outlook</a>
+          <a class="link-btn" onclick="openLink('youtube')">▶️ Open YouTube</a>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
