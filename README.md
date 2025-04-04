@@ -68,3 +68,11 @@ Secure by design. Built for balance. Made to help you work better, safer, and mo
 > ✨ Powered by Microsoft Entra ID  
 > 🔐 Trusted by IT  
 > 😎 Approved by people who *actually* use their browser
+>
+> ## 🧭 Try Microsoft Edge for Business
+
+Experience smart profile switching — just like the real thing.  
+Click below to toggle between Work and Personal modes:
+
+[🔐 Try It Now](https://chandiefae.github.io/secure-by-design/demo/)
+
